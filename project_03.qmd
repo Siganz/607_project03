@@ -1,0 +1,112 @@
+---
+title: "assignment_5b"
+format: html
+toc: true
+toc-depth: 5
+toc-location: left
+---
+
+## Approach
+
+### Collaboration Tools
+
+Our group will use the following collaboration tools throughout the project:
+
+#### Communication
+- Slack direct message group chat
+
+#### Code Sharing
+- GitHub repository:  
+  [607_project03](https://github.com/Siganz/607_project03)
+
+#### Project Documentation
+- Project README:  
+  [README.md](https://github.com/Siganz/607_project03/blob/main/README.md)
+
+---
+
+### Data Sources
+
+We identified two primary data sources for this project: **O*NET Online** and **Kaggle**.
+
+#### 1. O*NET Online
+O*NET Online provides structured occupational data for the role of Data Scientists, including information on relevant skills and labor demand.
+
+Resources:
+- Occupational summary:  
+  [O*NET Summary for Data Scientists](https://www.onetonline.org/link/summary/15-2051.00)
+- Skills CSV:  
+  [onetooonline_datascience_skills.csv](https://raw.githubusercontent.com/Siganz/607_project03/refs/heads/main/data/onetooonline_datascience_skills.csv)
+- Demand page:  
+  [O*NET Demand for Data Scientists](https://www.onetonline.org/link/demand/15-2051.00)
+- Skills demand CSV:  
+  [onetooonline_datascience_sklls_demand.csv](https://raw.githubusercontent.com/Siganz/607_project03/refs/heads/main/data/onetooonline_datascience_sklls_demand.csv)
+
+#### 2. Kaggle
+The Kaggle dataset contains data science job postings and salary-related information for 2025.
+
+Resources:
+- Dataset page:  
+  [Data Science Careers and Salaries 2025](https://www.kaggle.com/datasets/nalisha/data-science-careers-and-salaries-2025)
+- CSV file:  
+  [kaggle_data_science_job_posts_2025.csv](https://raw.githubusercontent.com/Siganz/607_project03/refs/heads/main/data/kaggle_data_science_job_posts_2025.csv)
+
+---
+
+### Data Loading
+
+The Kaggle dataset will be downloaded as a CSV file and loaded into R using `read_csv()` from the **tidyverse** package.
+
+The O*NET Online data can be accessed directly from the website and imported from the linked CSV files. Once loaded into R, both datasets will be cleaned and transformed using packages such as **dplyr** and **tidyr**.
+
+Relevant variables such as:
+- job title
+- employer type
+- required skills
+- skill rankings
+
+will be extracted to support analysis of the most frequently requested data science skills across job postings.
+
+---
+
+### Logical Model
+
+The logical model integrates job posting data from Kaggle with occupational skill data from O*NET Online.
+
+#### O*NET Entity
+- Skills
+- Ranking
+
+#### Kaggle Entity
+- Job_ID
+- Employer_Type
+- Job_Title
+- Skills
+
+---
+
+### Entity-Relationship (ER) Diagram
+
+The database is designed around a **many-to-many relationship** between jobs and skills.
+
+#### Jobs
+- `Job_ID`
+- `Employer_Type`
+- `Job_Title`
+
+#### Skills
+- `Skill_ID`
+- `Skill_Name`
+
+#### JobSkills
+- `Job_ID`
+- `Skill_ID`
+
+The `JobSkills` table acts as a junction table that links jobs and skills. This structure allows:
+- one job posting to have many skills
+- one skill to appear in many job postings
+
+This normalized design reduces redundancy and supports flexible querying of relationships between jobs and required skills.
+
+
+## Codebase
