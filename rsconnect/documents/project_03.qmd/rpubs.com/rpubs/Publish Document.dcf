@@ -1,0 +1,10 @@
+name: Publish Document
+title:
+username:
+account: rpubs
+server: rpubs.com
+hostUrl: rpubs.com
+appId: https://api.rpubs.com/api/v1/document/1412723/21e486436485426d866763f94a7929cb
+bundleId: https://api.rpubs.com/api/v1/document/1412723/21e486436485426d866763f94a7929cb
+url: http://rpubs.com/Shawn_Ganz_CUNY/1412723
+version: 1
